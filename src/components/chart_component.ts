@@ -1,5 +1,5 @@
 import { ComponentWrapper, EntityBuilder } from "aframe-typescript-toolkit"
-
+import {makeSteps} from "../utils/utls"
 interface Datapoint {
     readonly label: string
     readonly value: number
@@ -40,17 +40,7 @@ interface Datapoint {
 
   const toSteps = (graphData: ChartSchema) => {
     const values= graphData.data.map(data => data.value)
-    const max = Math.max(...values)
-    const steps = 10
-    const bucket = []
-    for (let i = 0; i < max+1; i++) {
-        const dif = max/10
-        if ( i % dif === 0) {
-            bucket.push(`${i}`)
-        }
-    }
-
-    return bucket
+    return makeSteps(values)
   }
 export class Chart extends ComponentWrapper<ChartSchema> {
     constructor() {

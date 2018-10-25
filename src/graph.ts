@@ -4,6 +4,8 @@ import { EntityBuilder } from "aframe-typescript-toolkit";
 
 import * as superagent from "superagent"
 import { Axis } from "./components/axis_component";
+import { Scatter } from "./components/scatter_component";
+import { ScatterDataPoint } from "./components/scatter_point_component";
 
 const graphData: ChartSchema = {
     data: [
@@ -42,6 +44,8 @@ export class Graph {
     constructor() {
         new Chart().register()
         new DataPoint().register()
+        new Scatter().register()
+        new ScatterDataPoint().register()
         new Axis().register()
     }
 
@@ -66,7 +70,7 @@ export class Graph {
                     const graphData = JSON.parse(val)
                     const builder = EntityBuilder.create( "a-entity", {
                         "ts-chart": graphData,
-                        position: "-2 2.5 -8",
+                        position: "-2 2.5 -10",
                     })
                     .attachTo()
 
