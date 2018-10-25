@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script type="text/javascript" src="index.js"></script>
+        <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+
+    </head>
+<body>
+  <a-scene antialias="true">
+      <a-light type="point" color="white" position="0 3 4"></a-light>
+      <a-entity environment="preset: forest"></a-entity>
+      <a-entity controls redux-connected="ready: ready"></a-entity>
+      <a-entity id="camera" movement-controls="fly: true" position="0 0 0">
+          <a-entity id="actualCamera" camera position="0 1 0">
+              <a-text id="crosshairs" value="+" color="red" position="-0.05 0 -2"/>
+              <a-entity id="wand" gearvr-controls position="0 0 0" visible="false"></a-entity>
+            </a-entity>
+        </a-entity>
+
+      <a-entity scenery-component redux-connected="ready: ready">
+        <a-sky color="#ECECEC"></a-sky>
+
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
