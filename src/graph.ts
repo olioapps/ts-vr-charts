@@ -52,7 +52,7 @@ export class Graph {
     render() {
         const latest: any = {
             data: "",
-            previousBuilder: null,
+            previousBuilder: [],
         }
         setInterval( () => {
             superagent.get("https://3w8yo67j6.sse.codesandbox.io/")
@@ -62,19 +62,28 @@ export class Graph {
                     console.log(val)
                     latest.data = val
 
-                    if (!!latest.previousBuilder) {
-                        const entity = latest.previousBuilder.toEntity()
+                    latest.previousBuilder.map( (b: EntityBuilder )=> {
+                        const entity = b.toEntity()
                         entity.parentElement.removeChild(entity)
-                    }
+                    })
 
-                    const graphData = JSON.parse(val)
-                    const builder = EntityBuilder.create( "a-entity", {
-                        "ts-chart": graphData,
+                    const allGraphsData = JSON.parse(val)
+                    const { chart, scatter } = allGraphsData
+
+                    const builderChart = EntityBuilder.create( "a-entity", {
+                        "ts-chart": chart,
                         position: "-2 2.5 -10",
                     })
                     .attachTo()
 
-                    latest.previousBuilder = builder
+                    const builderScatter = EntityBuilder.create( "a-entity", {
+                        "ts-scatter": scatter,
+                        position: "30 2.5 -7",
+                        rotation: "0 -10 0"
+                    })
+                    .attachTo()
+
+                    latest.previousBuilder = [builderChart, builderScatter]
                 }
             })
         }, 2000)
