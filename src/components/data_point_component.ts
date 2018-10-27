@@ -36,8 +36,4 @@ export class DataPoint extends ComponentWrapper<DataPointSchema> {
             width: 4        
         }).attachTo(bar)
     }
-
-    tick() {
-        
-    }
 }

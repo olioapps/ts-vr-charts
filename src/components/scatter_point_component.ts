@@ -34,8 +34,4 @@ export class ScatterDataPoint extends ComponentWrapper<DataPointSchema> {
         //     width: 4        
         // }).attachTo(bar)
     }
-
-    tick() {
-        
-    }
 }

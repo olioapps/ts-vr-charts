@@ -77,7 +77,4 @@ export class Chart extends ComponentWrapper<ChartSchema> {
         width: 20 
         }).attachTo(this.el)
     }
-
-    tick() {
-    }
 }

@@ -30,8 +30,5 @@ export class Axis extends ComponentWrapper<AxisSchema> {
             }).attachTo(this.el)
         })
     }
-
-    tick() {
-        
-    }
+ 
 }

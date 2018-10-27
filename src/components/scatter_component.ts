@@ -81,7 +81,4 @@ export class Scatter extends ComponentWrapper<ScatterSchema> {
             rotation: "0 0 90"
         }).attachTo(this.el)
     }
-
-    tick() {
-    }
 }
